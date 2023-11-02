@@ -22,16 +22,26 @@
             font-family: SF Pro Display;
             font-size: 64px;
             font-weight: 400;
+            font-family: SF Pro Display;
+            letter-spacing: 0.37400001287460327px;
+            line-height: 41px;
+
             display: flex;
             align-items: flex-end;
+            
         }
+
         .details {
             flex: 0 0 auto;
             .temp-range {
-                .high,
-                .low {
-                }
                 margin-bottom: 5px;
+                opacity: 0.3;
+                font-family: SF Pro Text;
+                font-size: 13px;
+                letter-spacing: -0.07800000160932541px;
+                .max-temp {
+                    margin-inline-end: 5px;
+                }
             }
             .location-details {
                 .city,
