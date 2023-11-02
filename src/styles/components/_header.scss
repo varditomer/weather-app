@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding-block: 9px;
+
+    .left {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        gap: 5px;
+    }
+
+    .app-title {
+        font-family: SF Pro Display;
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 34px;
+        letter-spacing: 0.36399999260902405px;
+        text-align: left;
+    }
+}
