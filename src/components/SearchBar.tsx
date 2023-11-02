@@ -1,7 +1,18 @@
-export default function SearchBar() {
-    const handleInputSearch = (ev: any) => {
-        console.log(`ev.target.value:`, ev.target.value)
+
+export default function SearchBar(
+    {
+        handleUserInput
+    }: {
+        handleUserInput: (userInput: string) => void;
     }
+) {
+
+    const handleInputSearch = (ev: any) => {
+        const userInput: string = ev.target.value
+        handleUserInput(userInput)
+
+    }
+
     return (
         <div className="search-bar">
             <input
