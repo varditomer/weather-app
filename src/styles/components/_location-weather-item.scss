@@ -1,0 +1,10 @@
+.location-weather-item {
+    position: relative;
+    height: 184px;
+
+    background-image: url('/src/assets/elements/rectangle.svg');
+    background-size: 100% calc(100% - 10px);
+    background-position: 0 10px;
+    background-repeat: no-repeat;
+    border: 1px solid red;
+}

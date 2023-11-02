@@ -2,6 +2,12 @@
 @import 'basics/base';
 @import 'basics/helpers';
 
+// PAGES
+@import 'pages/home';
+
+
 // COMPONENTS
 @import 'components/header';
 @import 'components/search-bar';
+@import 'components/locations-weather-list';
+@import 'components/location-weather-item';
