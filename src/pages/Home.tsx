@@ -1,9 +1,10 @@
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
+import { locationService } from "../services/locations.service";
 
 export default function Home() {
   const handleUserInput = async (userInput: string) => {
-    console.log(`userInput:`, userInput)
+    const locations = locationService.getLocations(userInput)
 
   }
 
