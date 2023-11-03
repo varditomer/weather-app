@@ -1,3 +1,4 @@
+import MagnifayIcon from '../assets/icons/magnifyingglass.svg'
 
 export default function SearchBar(
     {
@@ -9,6 +10,7 @@ export default function SearchBar(
 
     const handleInputSearch = (ev: any) => {
         const userInput: string = ev.target.value
+        if (!userInput) return
         handleUserInput(userInput)
 
     }
@@ -21,6 +23,7 @@ export default function SearchBar(
                 onChange={handleInputSearch}
                 placeholder="Search for a city or airport"
             />
+            <img src={MagnifayIcon} alt="search icon" className="search-icon" />
         </div>
     )
 }

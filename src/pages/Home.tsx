@@ -33,7 +33,6 @@ export default function Home() {
     const locationsWeather: LocationWeather[] = await Promise.all(
       locationsData.map((locationData: any) => generateLocationWeather(locationData))
     );
-    console.log(`locationsWeather:`, locationsWeather)
     setLocationsWeather(locationsWeather)
 
   }
