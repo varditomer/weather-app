@@ -11,6 +11,9 @@ export default function Home() {
   const generateLocationWeather = async (locationData: any) => {
     const locationLatLng = locationData.lat + ',' + locationData.lon
     const weatherDetails = await weatherService.getWeather(locationLatLng)
+    console.log(`weatherDetails.current.condition.code:`, weatherDetails.current.condition.code)
+    const weatherGraphic = weatherService.getWeatherGraphic(weatherDetails.current.condition.code)
+    console.log(`weatherGraphic:`, weatherGraphic)
 
     return {
       id: locationData.id,
@@ -20,7 +23,7 @@ export default function Home() {
       tempLow: weatherDetails.forecast.forecastday[0].day.mintemp_c,
       temp: weatherDetails.current.temp_c,
       weather: weatherDetails.current.condition.text,
-      weatherIcon: '',
+      weatherGraphic: weatherGraphic,
     } as LocationWeather
   }
 

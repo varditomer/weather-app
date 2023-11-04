@@ -1,5 +1,4 @@
 import { LocationWeather } from "../interfaces/LocationWeather.interface"
-import weatherImg from '../assets/elements/weather/moon_cloud_mid _rain.png'
 
 type LocationWeatherItemProps = {
   location: LocationWeather
@@ -47,7 +46,7 @@ export default function LocationWeatherItem({ location }: LocationWeatherItemPro
       </div>
 
       <div className="weather-type-section">
-        <img src={weatherImg} alt="" className="weather-element" />
+        <img src={location.weatherGraphic} alt="" className="weather-element" />
         <div className="weather-desc">{location.weather}</div>
       </div>
     </li>

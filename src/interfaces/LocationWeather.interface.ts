@@ -6,5 +6,5 @@ export interface LocationWeather {
   tempLow: number
   temp: number
   weather: string
-  weatherIcon: string
+  weatherGraphic: string
 }
