@@ -12,14 +12,18 @@ export default function SearchBar(
 
     const inputRef = useRef<HTMLInputElement>(null);
     const [isClearIconHidden, setIsClearIconHidden] = useState(true);
+    const [showHint, setShowHint] = useState(false);
+
 
     const handleInputSearch = (ev: any) => {
         const userInput: string = ev.target.value
         if (!userInput) {
             setIsClearIconHidden(true)
+            setShowHint(false);
             return
         }
         setIsClearIconHidden(false)
+        userInput.length < 3 ? setShowHint(true) : setShowHint(false);
         handleUserInput(userInput)
     }
 
@@ -33,6 +37,7 @@ export default function SearchBar(
             handleUserInput('');
         }
         setIsClearIconHidden(true)
+        setShowHint(false)
     };
 
     return (
@@ -57,6 +62,8 @@ export default function SearchBar(
                 onClick={handleClearSearch}
             />
             }
+            {showHint && <div className="hint">Input should be at least 3 characters</div>}
+
         </div>
     )
 }

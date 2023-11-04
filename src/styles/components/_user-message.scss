@@ -1,0 +1,14 @@
+.user-message {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    background-color: black;
+    color: rgba(222, 44, 44, 0.8);
+    width: 90%;
+    font-size: 20px;
+    font-family: SF Pro Text Semi Bold;
+    text-align: center;
+    padding-block: 6px;
+    border-radius: 8px;
+}

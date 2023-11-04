@@ -14,7 +14,6 @@ async function ajax(url: string, method = "GET") {
     })
     return res.data
   } catch (err: any) {
-    console.error(err)
     return err
   }
 }

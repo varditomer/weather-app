@@ -5,15 +5,17 @@ import { locationService } from "../services/locations.service";
 import { weatherService } from "../services/weather.service";
 import { useState } from 'react'
 
-export default function Home() {
+export default function Home({ setUserMessage }: {setUserMessage: React.Dispatch<React.SetStateAction<string>> }) {
   const [locationsWeather, setLocationsWeather] = useState<LocationWeather[]>([])
 
   const generateLocationWeather = async (locationData: any) => {
     const locationLatLng = locationData.lat + ',' + locationData.lon
     const weatherDetails = await weatherService.getWeather(locationLatLng)
-    console.log(`weatherDetails.current.condition.code:`, weatherDetails.current.condition.code)
+    if (weatherDetails?.hasOwnProperty('message')) {
+      setUserMessage(`Failed to retrieve location's weather`)
+      return
+    }
     const weatherGraphic = weatherService.getWeatherGraphic(weatherDetails.current.condition.code)
-    console.log(`weatherGraphic:`, weatherGraphic)
 
     return {
       id: locationData.id,
@@ -32,6 +34,11 @@ export default function Home() {
     // Api query must be at least 3 characters, reducing api calls
     if (userInput.length < 3) return setLocationsWeather([])
     const locationsData = await locationService.getLocations(userInput)
+    if (locationsData?.hasOwnProperty('message')) {
+      setUserMessage('Failed to retrieve location')
+      return
+    }
+
     if (!locationsData.length) return setLocationsWeather([])
 
     // cause each of locationWeather returns as a promise - wait for all
