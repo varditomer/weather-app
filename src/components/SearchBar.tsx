@@ -12,7 +12,6 @@ export default function SearchBar(
         const userInput: string = ev.target.value
         if (!userInput) return
         handleUserInput(userInput)
-
     }
 
     return (
@@ -21,7 +20,7 @@ export default function SearchBar(
                 type="text"
                 className="input-search"
                 onChange={handleInputSearch}
-                placeholder="Search for a city or airport"
+                placeholder="Search for a city or airport (3 digit code)"
             />
             <img src={MagnifayIcon} alt="search icon" className="search-icon" />
         </div>

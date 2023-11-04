@@ -26,8 +26,10 @@ export default function Home() {
 
 
   const handleUserInput = async (userInput: string) => {
+    // Api query must be at least 3 characters, reducing api calls
+    if (userInput.length < 3) return setLocationsWeather([])
     const locationsData = await locationService.getLocations(userInput)
-    if (!locationsData.length) return
+    if (!locationsData.length) return setLocationsWeather([])
 
     // cause each of locationWeather returns as a promise - wait for all
     const locationsWeather: LocationWeather[] = await Promise.all(
