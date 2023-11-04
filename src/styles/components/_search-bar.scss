@@ -30,16 +30,22 @@
         }
     }
 
-    .search-icon {
+    .search-icon,
+    .clear-icon {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        left: 8px;
         cursor: pointer;
         opacity: 1;
         transition: opacity 0.3s;
         &:hover {
             opacity: 0.4;
         }
+    }
+    .search-icon {
+        left: 8px;
+    }
+    .clear-icon {
+        right: 8px;
     }
 }

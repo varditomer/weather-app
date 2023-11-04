@@ -1,4 +1,11 @@
 import { httpService } from "./http.service"
+// Import the images
+import midRain from "../assets/elements/weather/mid_rain.png";
+import fastWind from "../assets/elements/weather/fast_wind.png";
+import showers from "../assets/elements/weather/showers.png";
+import tornado from "../assets/elements/weather/tornado.png";
+import midRainSun from "../assets/elements/weather/mid_rain_sun.png";
+
 
 const getWeather = async (latLng: string) => {
   const weatherApiBaseUrl = import.meta.env.VITE_WEATHER_API_BASE_URL
@@ -28,12 +35,12 @@ type GraphicUrls = {
 }
 
 const _figmaGraphicUrls: GraphicUrls = {
-  "mid rain": "/src/assets/elements/weather/mid_rain.png",
-  "fast wind / partly cloudy": "/src/assets/elements/weather/fast_wind.png",
-  showers: "/src/assets/elements/weather/showers.png",
-  tornado: "/src/assets/elements/weather/tornado.png",
-  "mid rain and sun": "/src/assets/elements/weather/mid_rain_sun.png",
-}
+  "mid rain": midRain,
+  "fast wind / partly cloudy": fastWind,
+  showers: showers,
+  tornado: tornado,
+  "mid rain and sun": midRainSun,
+};
 
 const getWeatherGraphic = (weatherCode: number): string => {
   console.log(`weatherCode:`, weatherCode)

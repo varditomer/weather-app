@@ -1,5 +1,6 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import MagnifyIcon from '../assets/icons/magnifyingglass.svg'
+import ClearIcon from '../assets/icons/clear.svg'
 
 export default function SearchBar(
     {
@@ -10,17 +11,28 @@ export default function SearchBar(
 ) {
 
     const inputRef = useRef<HTMLInputElement>(null);
+    const [isClearIconHidden, setIsClearIconHidden] = useState(true);
 
     const handleInputSearch = (ev: any) => {
         const userInput: string = ev.target.value
-        if (!userInput) return
+        if (!userInput) {
+            setIsClearIconHidden(true)
+            return
+        }
+        setIsClearIconHidden(false)
         handleUserInput(userInput)
     }
 
-    const handleIconClick = () => {
+    const handleSearchIconClick = () => {
+        inputRef?.current?.focus();
+    };
+
+    const handleClearSearch = () => {
         if (inputRef.current) {
-            inputRef.current.focus();
+            inputRef.current.value = '';
+            handleUserInput('');
         }
+        setIsClearIconHidden(true)
     };
 
     return (
@@ -36,8 +48,15 @@ export default function SearchBar(
                 src={MagnifyIcon}
                 alt="search icon"
                 className="search-icon"
-                onClick={handleIconClick}
+                onClick={handleSearchIconClick}
             />
+            {!isClearIconHidden && <img
+                src={ClearIcon}
+                alt="clear icon"
+                className="clear-icon"
+                onClick={handleClearSearch}
+            />
+            }
         </div>
     )
 }
