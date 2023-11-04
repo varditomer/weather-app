@@ -15,7 +15,11 @@ const getWeather = async (latLng: string) => {
   return await httpService.get(getLocationsUrl)
 }
 
-const _weatherGraphicMapping = {
+type WeatherGraphicMappingType = {
+  [key: string]: number[];
+};
+
+const _weatherGraphicMapping: WeatherGraphicMappingType = {
   "mid rain": [
     1150, 1153, 1168, 1171, 1180, 1183, 1186, 1189, 1192, 1195, 1201, 1240,
     1243, 1246, 1273, 1276,
@@ -43,16 +47,11 @@ const _figmaGraphicUrls: GraphicUrls = {
 };
 
 const getWeatherGraphic = (weatherCode: number): string => {
-  console.log(`weatherCode:`, weatherCode)
-  for (const [graphic, codes] of Object.entries(_weatherGraphicMapping)) {
-    console.log(`graphic:`, graphic)
-    console.log(`codes:`, codes)
-    if (codes.includes(weatherCode)) {
-      return _figmaGraphicUrls[graphic]
-    }
-  }
-  return "../assets/elements/weather/mid_rain_sun.png" // Return an empty string or a default graphic URL if no match is found.
-}
+  const graphic = Object.keys(_weatherGraphicMapping).find(key =>
+    _weatherGraphicMapping[key].includes(weatherCode)
+  );
+  return graphic ? _figmaGraphicUrls[graphic] : midRainSun;
+};
 
 export const weatherService = {
   getWeather,
