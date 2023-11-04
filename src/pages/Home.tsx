@@ -39,7 +39,10 @@ export default function Home({ setUserMessage }: {setUserMessage: React.Dispatch
       return
     }
 
-    if (!locationsData.length) return setLocationsWeather([])
+    if (!locationsData.length) {
+      setUserMessage(`Location not found!`)
+      return setLocationsWeather([])
+    }
 
     // cause each of locationWeather returns as a promise - wait for all
     const locationsWeather: LocationWeather[] = await Promise.all(

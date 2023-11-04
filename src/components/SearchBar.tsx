@@ -42,27 +42,30 @@ export default function SearchBar(
 
     return (
         <div className="search-bar">
-            <input
-                type="text"
-                className="input-search"
-                onChange={handleInputSearch}
-                placeholder="Search for a city or airport (3 digit code)"
-                ref={inputRef}
-            />
-            <img
-                src={MagnifyIcon}
-                alt="search icon"
-                className="search-icon"
-                onClick={handleSearchIconClick}
-            />
-            {!isClearIconHidden && <img
-                src={ClearIcon}
-                alt="clear icon"
-                className="clear-icon"
-                onClick={handleClearSearch}
-            />
-            }
-            {showHint && <div className="hint">Input should be at least 3 characters</div>}
+            <div className="input-container">
+                <input
+                    type="text"
+                    className="input-search"
+                    onChange={handleInputSearch}
+                    placeholder="Search for a city or airport (3 digit code)"
+                    ref={inputRef}
+                />
+                <img
+                    src={MagnifyIcon}
+                    alt="search icon"
+                    className="search-icon"
+                    onClick={handleSearchIconClick}
+                />
+                {!isClearIconHidden && <img
+                    src={ClearIcon}
+                    alt="clear icon"
+                    className="clear-icon"
+                    onClick={handleClearSearch}
+                />
+                }
+            </div>
+
+            {showHint && <div className="hint">Input must be at least 3 characters</div>}
 
         </div>
     )
