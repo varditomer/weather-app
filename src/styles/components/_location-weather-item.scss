@@ -64,6 +64,8 @@
 
         .weather-desc {
             padding-inline-end: 20px;
+            max-width: 180px;
+            text-align: right;
         }
     }
 }
